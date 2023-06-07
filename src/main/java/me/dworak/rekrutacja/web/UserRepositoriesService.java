@@ -22,7 +22,7 @@ public class UserRepositoriesService {
                 .map(repositoryInfo ->
                         GithubUserRepositoryDto.toDto(
                                 repositoryInfo,
-                                getBranchesInformation(username, repositoryInfo.getRepositoryName())))
+                                getBranchesInformation(username, repositoryInfo.repositoryName())))
                 .toList();
     }
 

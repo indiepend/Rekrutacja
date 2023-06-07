@@ -48,8 +48,8 @@ public class UserRepositoriesServiceTest {
         assertThat(repos)
                 .hasSize(1)
                 .contains(createGithubUserRepositoryDto(
-                                repositoryInfo2.getRepositoryName(),
-                                repositoryInfo2.getUsername(),
+                                repositoryInfo2.repositoryName(),
+                                repositoryInfo2.username(),
                                 singletonList(branch)));
     }
 }

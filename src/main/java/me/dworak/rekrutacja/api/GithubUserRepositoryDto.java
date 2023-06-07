@@ -7,8 +7,8 @@ public record GithubUserRepositoryDto(String repositoryName, String ownerName, L
     public static GithubUserRepositoryDto toDto(GithubUserRepositoryInfo githubUserRepositoryInfo,
                                                 List<Branch> branches) {
         return new GithubUserRepositoryDto(
-                githubUserRepositoryInfo.getRepositoryName(),
-                githubUserRepositoryInfo.getUsername(),
+                githubUserRepositoryInfo.repositoryName(),
+                githubUserRepositoryInfo.username(),
                 branches
         );
     }
