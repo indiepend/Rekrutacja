@@ -1,0 +1,30 @@
+[
+  {
+    "repositoryName": "repo1",
+    "ownerName": "rdworak37",
+    "branches": [
+      {
+        "name": "branch1",
+        "lastCommitSha": "12345ABCD"
+      },
+      {
+        "name": "branch2",
+        "lastCommitSha": "54321DCBA"
+      }
+    ]
+  },
+  {
+    "repositoryName": "repo3",
+    "ownerName": "rdworak37",
+    "branches": [
+      {
+        "name": "branch1",
+        "lastCommitSha": "12345ABCD"
+      },
+      {
+        "name": "branch2",
+        "lastCommitSha": "54321DCBA"
+      }
+    ]
+  }
+]

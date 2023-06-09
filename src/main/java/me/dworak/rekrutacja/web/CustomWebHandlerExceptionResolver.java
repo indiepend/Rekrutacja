@@ -7,6 +7,8 @@ import me.dworak.rekrutacja.api.UserNotFoundException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
+import org.springframework.http.MediaType;
 import org.springframework.lang.Nullable;
 import org.springframework.web.HttpMediaTypeNotAcceptableException;
 import org.springframework.web.servlet.ModelAndView;
@@ -46,13 +48,7 @@ public class CustomWebHandlerExceptionResolver extends DefaultHandlerExceptionRe
                                                             HttpServletResponse response,
                                                             @Nullable Object handler) throws IOException {
 
-        response.getOutputStream()
-                .write(
-                        objectMapper.writeValueAsBytes(
-                                ErrorDto.errorDto(
-                                        ex.getMessage(),
-                                        ex.getStatusCode().toString())));
-        response.setStatus(ex.getStatusCode().value());
+        prepareResponse(response, ex.getStatusCode(), ex.getMessage());
         return null;
     }
 
@@ -61,13 +57,18 @@ public class CustomWebHandlerExceptionResolver extends DefaultHandlerExceptionRe
                                               HttpServletResponse response,
                                               @Nullable Object handler) throws IOException {
 
+        prepareResponse(response, HttpStatus.NOT_FOUND, ex.getMessage());
+        return null;
+    }
+
+    private void prepareResponse(HttpServletResponse response, HttpStatusCode status, String message) throws IOException {
         response.getOutputStream()
                 .write(
                         objectMapper.writeValueAsBytes(
                                 ErrorDto.errorDto(
-                                        ex.getMessage(),
-                                        HttpStatus.NOT_FOUND.toString())));
-        response.setStatus(HttpStatus.NOT_FOUND.value());
-        return null;
+                                        message,
+                                        status.toString())));
+        response.setStatus(status.value());
+        response.addHeader("Content-type", MediaType.APPLICATION_JSON_VALUE);
     }
 }

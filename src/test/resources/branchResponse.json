@@ -1,0 +1,14 @@
+[
+  {
+    "name": "branch1",
+    "commit": {
+      "sha": "12345ABCD"
+    }
+  },
+  {
+    "name": "branch2",
+    "commit": {
+      "sha": "54321DCBA"
+    }
+  }
+]
